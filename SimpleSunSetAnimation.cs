@@ -15,7 +15,7 @@ public partial class SimpleSunSetAnimation : Form
         float angle_moon_rotation;
 
         //variable increments of angles
-		float size_of_earth_rotation_change =0.05F;
+	float size_of_earth_rotation_change =0.05F;
         float size_of_moon_rotation_change =0.05F;
 
         //constants
@@ -25,7 +25,7 @@ public partial class SimpleSunSetAnimation : Form
         //earth radius
         const int EarthR = 25;
         
-		//moon radius
+	//moon radius
         const int MoonR = 5;
 
         //earth track
