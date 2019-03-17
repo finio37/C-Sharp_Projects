@@ -1,0 +1,103 @@
+﻿@model ProjektKsiegarniBCity.Models.Article
+@using ProjektKsiegarniBCity.Infrastructure
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+@Html.Action("MenuCategories")
+<div class="container">
+
+    <div class="row">
+        
+        <div class="col-lg-3">
+            @if (Model.IsPromotion == true)
+            {
+            <img style="margin-top:30px;width:266px;height:350px;" src="@Url.PromocjeIconPath(Model.CoverFileName)" />
+            }
+            @if (Model.IsNew == true)
+            {
+                <img style="margin-top:30px;width:266px;height:350px;" src="@Url.NowosciIconPath(Model.CoverFileName)" />
+            }
+            @if (Model.CategoryName == "Obcojezyczne")
+            {
+                <img style="margin-top:30px;width:266px;height:350px;" src="@Url.ObcojezyczneIconPath(Model.CoverFileName)" />
+            }
+            @if (Model.CategoryName == "Promocje")
+            {
+                <img style="margin-top:30px;width:266px;height:350px;" src="@Url.PromocjeIconPath(Model.CoverFileName)" />
+            }
+            @if (Model.CategoryName == "Czasopismo")
+            {
+                <img style="margin-top:30px;width:266px;height:350px;" src="@Url.CzasopismaIconyPath(Model.CoverFileName)" />
+            }
+            @if (Model.CategoryName == "Audiobook")
+            {
+                <img style="margin-top:30px;width:266px;height:350px;" src="@Url.AudiobookIconyPath(Model.CoverFileName)" />
+            }
+            @if (Model.CategoryName == "Przecena")
+            {
+                <img style="margin-top:30px;width:266px;height:350px;" src="@Url.PrzecenaIconyPath(Model.CoverFileName)" />
+            }
+        </div>
+        <div class="col-lg-5">
+            <h1>@Model.ArticleTitle</h1>
+            
+
+            <table>
+                <tr>
+                    <td> Język</td>
+                    <td>@Model.Jezyk</td>
+                </tr>
+                <tr>
+                    <td>
+                        Wydawnictwo:
+                    </td>
+                    <td>@Model.AuthorName</td>
+                </tr>
+                <tr>
+                    <td>
+                        Autor:
+                    </td>
+                    <td>@Model.AuthorName</td>
+                </tr>
+                <tr>
+                    <td>
+                        Opis:
+                    </td>
+                    <td>@Model.Description</td>
+                </tr>
+                <tr>
+                    <td>
+                        ISBN:
+                    </td>
+                    <td>@Model.ISBN</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-lg-4">
+            <div class="bordering">
+                <div class="pricebox">
+
+                    <s>33,22</s>
+                    <strong>oszczędzasz 30%</strong>
+
+
+                </div>
+                <div class="price">
+                    <span>Cena:</span>
+                    @String.Format("{0:0.##}", @Model.Cena)<span>PLN</span>
+
+                </div>
+                <div class="product-available">
+                    w magazynie, wysyłamy w 24h
+                </div>
+                
+                <div class="addbox">
+                    <a href="@Url.Action("AddToCart","Cart", new { id= Model.ArticleId})" class="button secondary hollow expanded rounded">Dodaj do koszyka</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ProjektKsiegarniBCity.Models.Category>
+<div class="container menu-parent-div-gray">
+    <div class="row">
+        <div id="menu-horizontal" class="col-lg-12">
+            <ul>
+                @foreach (var kateg in Model)
+                {
+                <li><a href="@Url.Action("List","Store", new { kategorie = kateg.Name.ToString() })" class="@kateg.ClassName">
+                    @kateg.Name
+                    </a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

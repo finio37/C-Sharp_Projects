@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProjektKsiegarniBCity.Models.Article>
+@using ProjektKsiegarniBCity.Infrastructure
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<h2>List</h2>
+@Html.Action("MenuCategories")
+<div id="EdgarPromotion" class="container main">
+    <div class="row">
+        <h1 style="margin-top:20px;color:black;font-size:22px;margin-left:20px;">Lista artykułów</h1>
+        <div class="col-lg-12" style="margin-top:40px">
+            <ul>
+            @foreach (var arts in Model)
+            {
+                if (arts.CategoryName == "Obcojezyczne")
+                {
+                <li class="show-list">
+                    <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })"><img style="display:block;" src="@Url.ObcojezyczneIconPath(arts.CoverFileName)" alt="@arts.CategoryName" /></a></div>
+                    <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })">@arts.ArticleTitle</a></div>
+
+                </li>
+                }
+                else if (arts.CategoryName == "Promocje")
+                {
+                    <li class="show-list">
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })"><img style="display:block;" src="@Url.PromocjeIconPath(arts.CoverFileName)" alt="@arts.CategoryName" /></a></div>
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })">@arts.ArticleTitle</a></div>
+                    </li>
+                }
+                else if (arts.CategoryName == "Czasopismo")
+                {
+                    <li class="show-list">
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })"><img style="display:block;" src="@Url.CzasopismaIconyPath(arts.CoverFileName)" alt="@arts.CategoryName" /></a></div>
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })">@arts.ArticleTitle</a></div>
+
+                    </li>
+                }
+                else if (arts.CategoryName == "Przecena")
+                {
+                    <li class="show-list">
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })"><img style="display:block;" src="@Url.PrzecenaIconyPath(arts.CoverFileName)" alt="@arts.CategoryName" /></a></div>
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })">@arts.ArticleTitle</a></div>
+
+                    </li>
+                }
+                else if (arts.CategoryName == "Audiobook")
+                {
+                    <li class="show-list">
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })"><img style="display:block;" src="@Url.AudiobookIconyPath(arts.CoverFileName)" alt="@arts.CategoryName" /></a></div>
+                        <div class="list" style="width:100px;"><a href="@Url.Action("Details", "Store", new { id = arts.ArticleId })">@arts.ArticleTitle</a></div>
+
+                    </li>
+                }
+            }
+                </ul>
+        </div>
+    </div>
+</div>

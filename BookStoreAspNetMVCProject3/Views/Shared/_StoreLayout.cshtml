@@ -1,0 +1,140 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="../Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <p style="text-align:center;color:red;font-size:24px;">Demonstracyjna wersja localhost księgarni internetowej - w budowie...</p>
+    <div id="TopBelt" class="container">
+        <div id="BookCityLogoDiv">
+            <a href="#">
+                <img src="@Url.Content("~/Content/logo/zwykleLogo.png")" />
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 pading-div-search-form" style="">
+                <form method="post" action="/search" class="search-form-height">
+
+
+                    <div class="input-group">
+                        <div class="input-group-label show-for-large" style="width:60px">
+                            <img src="@Url.Content("~/Content/logo/input_loop_24.png")" />
+                        </div>
+                        <input class="input-group-field autocomplete" type="text" placeholder="wpisz słowo kluczowe, tytuł, autora lub numer ISBN" name="q" value="" autocomplete="off">
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="col-lg-2 padings-of-option-selection">
+                <select name="limit_search" id="search_limit">
+                    <option value="all">wszędzie</option>
+                    <option value="f">obcojęzyczne</option>
+                    <option value="a">audiobooki</option>
+
+                </select>
+            </div>
+            <div class="col-lg-1 padding-of-input-submit">
+                <input type="submit" class="button" value="szukaj" />
+            </div>
+            <div class="col-lg-3">
+                <a href="#">
+                    <div class="floating">
+                        <span id="OrderAmnout">Koszyk: (@Html.Action("GetCartItemsCount", "Cart"))</span>
+                    </div>
+                </a>
+                
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+
+    </div>
+    <div class="clear"></div>
+    
+
+
+
+
+    <div class="renderBody">
+        @Html.MvcSiteMap().SiteMapPath()
+        @RenderBody()
+    </div>
+
+
+
+
+    <div class="footer container">
+        <div class="foot-width row">
+            <div class="kol1-foot col-lg-4">
+                <h3>O NAS</h3>
+                <ul>
+                    <li><a href="@Url.Action("StaticContent","Home", new { viewname="Onas"})">O Księgarni</a></li>
+                    <li><a href="@Url.Action("StaticContent","Home", new { viewname="DlaczegoWartoUNasKupowac" })">Dlaczego warto u nas kupować</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#">Księgarnia Stacjonarna</a></li>
+                    <li><a href="#">Opinie</a></li>
+
+
+                </ul>
+            </div>
+            <div class="kol2-foot col-lg-4">
+                <h3>ZAMÓWIENIA</h3>
+                <ul>
+                    <li><a href="#">Sprawdź status zamówienia</a></li>
+                    <li><a href="#">Regulamin zakupów</a></li>
+                    <li><a href="#">Koszty dostawy</a></li>
+                    <li><a href="#">Odbiór osobisty</a></li>
+
+
+
+                </ul>
+            </div>
+            <div class="kol3-foot col-lg-4">
+                <h3>KONTAKT</h3>
+                <ul>
+                    <li>Email ja@gmail.com</li>
+                    <li>
+                        Księgarnia internetowa<br />
+                        "22 345 02 39<br />
+                        pn-pt 9-17"
+                    </li>
+                    <li>
+                        Księgarnia Stacjonarna<br />
+                        tel.22.435.6666 <br />
+                        pn-pt 9-17<br />
+                        sob. 11-14
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js"></script>
+    <script>
+	$(document).foundation();
+    </script>
+    @RenderSection("ScriptsBottom", required: false)
+</body>
+</html>

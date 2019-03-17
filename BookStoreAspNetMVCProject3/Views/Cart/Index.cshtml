@@ -1,0 +1,116 @@
+﻿@model ProjektKsiegarniBCity.ViewModels.CartViewModel
+@using ProjektKsiegarniBCity.Infrastructure
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="container">
+    @Html.Action("MenuCategories","Store")
+    <h1>Twój Koszyk</h1>
+    <table id="cart-table">
+        @foreach (var cartItem in Model.CartItems)
+        {
+        <tr id="car-row-@cartItem.Article.ArticleId">
+            <td>
+                @if (cartItem.Article.CategoryName == "Audiobook")
+                {
+                <a href="@Url.Action("Details", "Store", new { id = cartItem.Article.ArticleId })">
+                <img style="width:120px;" src="@Url.Content(Url.AudiobookIconyPath(cartItem.Article.CoverFileName))" />
+                </a>
+                }
+                @if (cartItem.Article.CategoryName=="Czasopismo")
+                {
+                    <a href = "@Url.Action("Details", "Store", new { id = cartItem.Article.ArticleId })" >
+                    <img style="width:120px;" src="@Url.Content(Url.CzasopismaIconyPath(cartItem.Article.CoverFileName))" />
+                        </a>
+                }
+                @if (cartItem.Article.CategoryName == "Obcojezyczne")
+                {
+                    <a href="@Url.Action("Details","Store", new { id = cartItem.Article.ArticleId})">
+                        <img style="width:120px;" src="@Url.Content(Url.ObcojezyczneIconPath(cartItem.Article.CoverFileName))" />
+                    </a>
+                }
+            </td>
+            <td>
+                @if (cartItem.Article.CategoryName == "Audiobook")
+                {
+                    <a href="@Url.Action("Details","Store",new { id = cartItem.Article.ArticleId})">
+                        @cartItem.Article.ArticleTitle
+                    </a>
+                }
+                @if (cartItem.Article.CategoryName == "Czasopismo")
+                {
+                    <a href="@Url.Action("Details","Store",new { id = cartItem.Article.ArticleId})">
+                        @cartItem.Article.ArticleTitle
+                    </a>
+                }
+                @if (cartItem.Article.CategoryName == "Obcojezyczne")
+                {
+                    <a href="@Url.Action("Details","Store",new { id = cartItem.Article.ArticleId})">
+                        @cartItem.Article.ArticleTitle
+                    </a>
+                }
+            </td>
+            <td>
+                Ilość: <span id="cart-item-count-@cartItem.Article.ArticleId"> @cartItem.Quantity </span>
+            </td>
+            <td>
+                @String.Format("{0:0.##}", cartItem.TotalPrice) zl
+            </td>
+            <td><a class="removeProduct" data-id="@cartItem.Article.ArticleId" href="@Url.Action("RemoveFromCart","Cart", new { id= cartItem.Article.ArticleId })">Usuń</a></td>
+        </tr>
+
+        }
+        
+        
+    </table>
+    <div id="total-price-value">
+        <span> @String.Format("{0:0.##}", Model.TotalPrice) </span> zł
+    </div>
+    <div id="section-button-container">
+        <a class="button-link" href="#">Kontynuuj zakupy</a>
+        @if (Model.TotalPrice > 0)
+        {
+            <a class="button-link" id="cart-button-checkout" href="@Url.Action("Checkout","Cart")">Kupuję</a>
+        }
+    </div>
+
+</div>
+@section ScriptsBottom {
+
+    
+    <script>
+        $(function () {
+            $(".removeProduct").click(function () {
+                var recordToDelete = $(this).attr("data-id");
+                if (recordToDelete != '') {
+                    $.post("/Cart/RemoveFromCart", { "id": recordToDelete },
+                        function (response) {
+                            if (response.RemovedItemCount == 0) {
+                                $('#cart-row-' + response.RemoveItemId).fadeOut('slow', function () {
+                                    if (response.CartItemsCount == 0) {
+                                        $('#cart-empty-message').removeClass("hidden");
+                                    }
+                                });
+                            } else {
+                                $('#cart-item-count-' + response.RemoveItemId).text(response.RemovedItemCount);
+                            }
+                            if (response.CartItemsCount == 0) {
+                                $('#cart-button-checkout').addClass("hidden");
+                                $('#total-price').addClass("invisible");
+                            }
+                            $('#total-price-value').text(response.CartTotal);
+                            $('#cart-header-items-count').text(response.CartItemsCount);
+                        });
+                    return false;
+                }
+
+            });
+
+        });
+    </script>
+    }

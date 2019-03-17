@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ProjektKsiegarniBCity.Models.Article>
+@using ProjektKsiegarniBCity.Infrastructure
+    <div id="EdgarRabat">
+
+    <ul>
+        @foreach (var promocje in Model)
+        {
+            if (promocje.CategoryName=="Podrecznik")
+            {
+                <li>
+                    <div style="text-align:center;"><a href="@Url.Action("Details","Store", new { id = promocje.ArticleId })" style="display:block;width:100px;height:150px;"><img src="@Url.PromocjeIconPath(promocje.CoverFileName)" alt="Promocje" /></a></div>
+                    <div><a href="@Url.Action("Details","Store", new { id = promocje.ArticleId })">@promocje.ArticleTitle</a></div>
+                    <div><a href="@Url.Action("AddToCart","Cart", new { id = promocje.ArticleId })">
+                            Dodaj do koszyka</a>
+                    </div>
+                </li>
+            }
+        }
+
+    </ul>
+</div>
+
+
+
+
+
+
+
+
