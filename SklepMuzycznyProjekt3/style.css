@@ -1,0 +1,183 @@
+﻿body {
+}
+h1{
+    text-align:center;
+}
+#gorne_menu {
+   
+    
+
+}
+.klasa_gorne_menu {
+    width:812px;
+    margin:auto;
+    
+}
+.klasa_gorne_menu ul li{
+    float:left;
+    margin-left:10px;
+    list-style-type:none;
+
+}
+.clear {
+    clear:both;
+    width:1000px;
+}
+.przedzialka{
+    width:812px;
+    margin:auto;
+
+}
+.klasa_przedzialka_gorna{
+    width:812px;
+    margin:auto;
+    margin-top:20px;
+
+}
+.klasa_przedzialka_dolna{
+    width:812px;
+    margin:auto;
+
+}
+.przedzialka ul li{
+    
+    float:left;
+    margin-left:10px;
+    list-style-type:none;
+}
+.content{
+    width:812px;
+    margin:auto;
+}
+.lewy_sidebar_widoczny_zawsze{
+    width:200px;
+    float:left;
+    margin-top:20px;
+}
+.lewy_sidebar_widoczny_zawsze ul li{
+    list-style-type:none;
+    margin-bottom:10px;
+
+}
+.podkontent{
+    width:612px;
+    float:left;
+}
+
+#bsTabelaWyprzedarzyGrid {
+    width:400px;
+    margin:auto;
+}
+#bsTabelaInstrumentowGrid{
+    width:400px;
+    margin:auto;
+}
+#bsTabelaNaglosnienieGrid{
+    width:400px;
+    margin:auto;
+
+}
+#bsOprogramowanieGrid{
+    width:400px;
+    margin:auto;
+}
+#bsGridPokazujacyZalogowanegoUsera{
+    width:300px;
+    margin:auto;
+}
+#bsZalogujAdminaBtn{
+    width:200px;
+    margin:auto;
+}
+#bsTabelaStudioGrid{
+    width:500px;
+    margin:auto;
+
+}
+#bsTabelaAkcesoriowGrid {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaAdministracyjnaAkcesoriowGrid{
+    width:500px;
+    margin:auto;
+}
+#bsTAkcesoriaKoszyk {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaInstrumentowAdmGrid {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaNaglosnienieAdmGrid{
+    width:500px;
+    margin:auto;
+}
+#bsTabelaOprogramowanieAdmGrid {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaStAdmGrid {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaWyprzedarzyAdmGrid {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaDspGrid {
+    width:500px;
+    margin:auto;
+}
+#bsTabelaDspAdmGrid{
+    width:500px;
+    margin:auto;
+}
+#bsTabelaInstrumentowKoszyk {
+    width:400px;
+    margin:auto;
+}
+#bsTabelaNaglosnieniaKoszykGrid {
+    width:400px;
+    margin:auto;
+}
+
+#bsTabelaProduktowDspKoszykGrid
+ {
+    width:400px;
+    margin:auto;
+}
+#bsTabelaOprogramowaniaKoszykGrid{
+    width:400px;
+    margin:auto;
+}
+#bsTabelaProduktowStKoszykGrid {
+    width:400px;
+    margin:auto;
+}
+#bsTabelaProduktowWyprzedarzowychKoszykGrid {
+    width:400px;
+    margin:auto;
+}
+
+.administratorzy_block {
+    width:1000px;
+    margin:auto;
+}
+.administratorzy_gorne_menu {
+    width:820px;
+    margin:auto;
+}
+.administratorzy_menu>li{
+    float:left;
+    list-style-type:none;
+    margin-left:10px;
+}
+.formularzAdm_div {
+    width:820px;
+    margin:auto;
+}
+h2{
+    text-align:center;
+}
